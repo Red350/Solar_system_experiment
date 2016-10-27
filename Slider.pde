@@ -29,17 +29,20 @@ class Slider
     rect(sliderX, sliderY, sliderSize, sliderSize);
   }
   
+  public void stop()
+  {
+    simulationSpeed = 0;
+    sliderX = posX + barWidth / 2 - sliderSize / 2;
+  }
+  
   void mouseDragged()
   {
     if(mouseX > posX + edgeBuffer + sliderSize / 2 && mouseX < posX + barWidth - edgeBuffer - sliderSize / 2 && mouseY > posY - 5 && mouseY < posY + 10)
     {
       sliderX = mouseX - sliderSize / 2;
-      println(sliderX + sliderSize / 2 - barWidth / 2 - posX);
       // need to make the centre of the slider equal to a simulation speed of 1.0
       // when the slider is centred, to make sliderX 0 we must add half slider block, subtract half barWidth, subtract posX
       simulationSpeed = sliderX + sliderSize / 2 - barWidth / 2 - posX;
-      // hardcoded speed change
-      //simulationSpeed = (sliderX - posX -10) + 1;
     }
   }
 }
